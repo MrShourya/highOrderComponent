@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Feed from "./components/Feed";
+import HOCFunctionalComponent from "./components/HOCFunctionalComponent";
 import "./App.css";
 
 class App extends Component {
@@ -33,6 +34,8 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+        
+        <HOCFunctionalComponent contacts={this.state.contacts} />
 
         <Feed contacts={this.state.contacts} />
       </div>

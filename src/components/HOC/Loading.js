@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Loading.css";
-
+import FunctionalComponent from "../FunctionalComponent";
 const isEmpty = prop =>
   prop === null ||
   prop === undefined ||
@@ -22,14 +22,17 @@ const Loading = loadingProp => WrappedComponent => {
     render() {
       const myProps = {
         loadingTime: ((this.endTimer - this.startTimer) / 1000).toFixed(2),
-        name:"Shourya Mangal"
+        name: "Shourya Mangal"
       };
 
       return isEmpty(this.props[loadingProp]) ? (
         <div className="loader" />
       ) : (
-        <WrappedComponent {...this.props} {...myProps} />
-      );
+          <React.Fragment>
+            <FunctionalComponent {...myProps}></FunctionalComponent>
+            <WrappedComponent {...this.props} {...myProps} />
+          </React.Fragment>
+        );
     }
   };
 };
