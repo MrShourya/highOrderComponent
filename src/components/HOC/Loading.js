@@ -8,7 +8,7 @@ const isEmpty = prop =>
   (prop.constructor === Object && Object.keys(prop).length === 0);
 
 const Loading = loadingProp => WrappedComponent => {
-  return class LoadingHOC extends Component {
+ class LoadingHOC extends Component {
     componentDidMount() {
       this.startTimer = Date.now();
     }
@@ -35,6 +35,13 @@ const Loading = loadingProp => WrappedComponent => {
         );
     }
   };
+  LoadingHOC.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  return LoadingHOC;
 };
+
+function getDisplayName(WrappedComponent) {
+  console.log(WrappedComponent.displayName , WrappedComponent.name); // WrappedComponent.name is the one that works here
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
 
 export default Loading;
