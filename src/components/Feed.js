@@ -11,7 +11,12 @@ class Feed extends Component {
         <h1>{greeting}</h1>
         <strong>Welcome {name} </strong>
         <p>Loading time {loadingTime} seconds</p>
-        <FeedItem contacts={this.props.contacts} />
+        {/* <FeedItem contacts={this.props.contacts} /> */}
+        <div>
+          {this.props.contacts.length &&
+            <FeedItem contacts={this.props.contacts} />
+          }
+        </div>
       </div>
     );
   }
